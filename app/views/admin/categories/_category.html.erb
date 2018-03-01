@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <h4><%= category.name %></h4>
+  </td>
+  <td>
+    <h4>
+      <p><%= category.id %></p>
+    </h4>
+  </td>
+  <td>
+    <% iteration = 0 %>
+    <% category.products.each do |product| %>
+    <%   if iteration < category.products.length - 1 %>
+    <%= "#{product.name}," %>
+    <%   else %>
+    <%= product.name %>
+    <%   end %>
+    <% iteration += 1 %>
+    <% end %>
+  </td>
+</tr>
