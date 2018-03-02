@@ -8,6 +8,33 @@
     <h4>Thank you for your order!</h4>
   </div>
 
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th colspan="2">Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @order %>
+    </tbody>
+    <tfoot>
+      <td colspan="2">
+        <p><%= @order.email %></p>
+      </td>
+        <td colspan="3">
+          <p align="right">
+            Order Total: <%= humanized_money_with_symbol @order.total_cents.to_f / 100 %>
+          </p>
+        </td>
+    </tfoot>
+  </table>
+
+
+
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
+
