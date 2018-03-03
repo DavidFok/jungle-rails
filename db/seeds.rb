@@ -132,5 +132,81 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## USERS
+
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+User.create({
+  first_name: "Joel",
+  last_name: "Joel",
+  email: "joel@joel.joel",
+  password_digest: "$2a$10$abEC/S5x6zx2Aukvj29fR.GAfkZGi0Z4y6FoEYSsk6DqcLZWWKeV2"
+})
+
+User.create({
+  first_name: "dave",
+  last_name: "f",
+  email: "dave@dave.dave",
+  password_digest: "$2a$10$l6.zfiTmV5hAD0hcKg0nUOpXVh3XxAt3zsdsDtgytNYJBHdY65O9m"
+})
+
+User.create({
+  first_name: "John",
+  last_name: "Doe",
+  email: "john@doe.com",
+  password_digest: "$2a$10$kx.tlksOFz.3L4.W.vWJ2u/x1lotuCay3.iGTUauJdIYmtnLGOcmi"
+})
+
+
+## PRODUCTS
+
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+Review.create({
+  product_id: 1,
+  user_id: 2,
+  description: 'bla bla blaaaaah',
+  rating: 5
+})
+
+Review.create({
+  product_id: 1,
+  user_id: 1,
+  description: 'bla bla bla fuck blaaaaah',
+  rating: 3
+})
+
+Review.create({
+  product_id: 2,
+  user_id: 1,
+  description: 'What is this?!?!?!?!',
+  rating: 2
+})
+
+Review.create({
+  product_id: 3,
+  user_id: 2,
+  description: 'This is a butt~~~~',
+  rating: 2
+})
+
+Review.create({
+  product_id: 4,
+  user_id: 3,
+  description: 'dunno bout this...',
+  rating: 3
+})
+
+Review.create({
+  product_id: 5,
+  user_id: 1,
+  description: 'bla bla blaaaaah',
+  rating: 5
+})
+
 
 puts "DONE!"
