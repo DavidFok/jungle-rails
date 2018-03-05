@@ -225,7 +225,11 @@ DEPENDENCIES
   rails (= 4.2.6)
   rails_12factor
   rmagick
+<<<<<<< HEAD
   rspec-rails (~> 3.5)
+=======
+  rspec-rails
+>>>>>>> feature/product-specs
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
