@@ -8,8 +8,8 @@ class Product < ActiveRecord::Base
   has_many :reviews
 
   validates :name, presence: true
-  validates :price, presence: true
+  validates :price_cents, presence: true
   validates :quantity, presence: true
-  validates :category, presence: true
+  validates :category_id, presence: true
 
 end
