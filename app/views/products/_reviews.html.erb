@@ -1,0 +1,34 @@
+<dd>
+  <span>Average rating:</span>
+  <% @star_count.to_i.times do  %>
+    <span class="glyphicon glyphicon-star"></span>
+  <% end %>
+  <% @blank_count.to_i.times do %>
+    <span class="glyphicon glyphicon-star-empty"></span>
+  <% end %>
+ <span>from <%= @product.reviews.length %> reviews</span>
+</dd>
+<% @product.reviews.each do |review| %>
+  <dd>
+    <table style="width: 70%">
+      <tr>
+        <td style="width: 25%">
+          <span style="font-weight: bold">
+            <%= review.user.first_name %>
+            <%= review.user.last_name %>
+          said:
+          </span>
+        </td>
+        <td style="padding-left: 20px; text-align: left; width: 65%">
+          <%= review.description %>
+        </td>
+          <% if current_user %>
+            <% if review.user_id == current_user.id %>
+              <td>
+              <%= link_to fa_icon('trash'), product_review_path(:product_id => @product.id, :id => review.id), class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+              </td>
+            <% end %>
+          <% end %>
+    </table>
+  </dd>
+<% end %>
