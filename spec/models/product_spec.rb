@@ -17,7 +17,7 @@ RSpec.describe Product, type: :model do
     # validates :name, presence: true
     it 'should have throw an error without a name' do
       @product.name = nil
-      expect(@product.valid?).to eq false #how come @product.save + raise_error doesn't work?!?!?!?!??!!
+      expect(@product.save).to eq false
     end
 
     # validates :price_cents, presence: true
