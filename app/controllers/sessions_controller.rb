@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if authenticate_with_credentials(params[:email]), params[:password])
+    if authenticate_with_credentials(params[:email], params[:password])
       session[:user_id] = user.id
       redirect_to '/'
     else
