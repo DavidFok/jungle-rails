@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
 
 
 
-  describe 'Validation' do
+  describe 'Validations' do
 
     # validates :first_name, presence: true
     it 'should have throw an error without a first_name' do
@@ -82,6 +82,33 @@ RSpec.describe User, type: :model do
       @user1 = User.create first_name: "Joel", last_name: "Joel", email: "joel@joel.joel", password: "asdf", password_confirmation: "asdf"
       @user.email = "JOEL@joel.joel"
       expect {@user.save!}.to raise_error ActiveRecord::RecordInvalid, "Validation failed: Email has already been taken"
+    end
+  end
+
+
+  describe '.authenticate_with_credentials' do
+    it 'should authenticate when provided the correct email & password' do
+      @user.save!
+      compare = @user == @user.authenticate_with_credentials("joel@joel.joel", "asdf")
+      expect(compare).to be true
+    end
+
+    it 'should return false when provided the wrong password' do
+      @user.save!
+      compare = @user == @user.authenticate_with_credentials("joel@joel.joel", "password??")
+      expect(compare).to be false
+    end
+
+    it 'should sign in user even if there are blank spaces before or after their email' do
+      @user.save!
+      compare = @user == @user.authenticate_with_credentials("  joel@joel.joel", "asdf")
+      expect(compare).to be true
+    end
+
+    it 'should sign in user even if typed using incorrect case' do
+       @user.save!
+      compare = @user == @user.authenticate_with_credentials("  JOEL@joel.Joel", "asdf")
+      expect(compare).to be true
     end
   end
 end
